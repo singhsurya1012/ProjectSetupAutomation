@@ -45,12 +45,15 @@ user = g.get_user()
 username = user.login
 
 # Check if repo already exists on github
+repo = None
 try:
     repo = g.get_repo(username + '/' + projectName)
-    print('Repository ' + projectName + ' already exists on Github')
-    exit()
 except:
     print('Repository check complete. Creating repository ' + projectName)
+
+if repo is not None:
+    print('Repository ' + projectName + ' already exists on Github')
+    exit()
 
 # Create repo with given name
 repo = user.create_repo(projectName)
@@ -63,6 +66,5 @@ os.system('git commit -m "Repo setup"')
 os.system('git push -u origin master')
 
 # open folder in Intellij
-os.system('idea .')
-
 print('Project setup complete.... Project will be opened in Intellij')
+os.system('idea .')
