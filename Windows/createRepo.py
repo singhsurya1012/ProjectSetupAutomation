@@ -17,8 +17,14 @@ else:
     print("Directory " , projectDir ,  " already exists")
     
 
+#change directory to  created folder
+os.chdir(projectDir)
 
+#Run git init commandLine
+os.system('git init')
+
+#create README.md file
+os.system('echo New Project - ' + projectName + ' >> README.md')
 
 
 print("Github Token "  + gitToken)
-print("Creating repo: " + projectName)
