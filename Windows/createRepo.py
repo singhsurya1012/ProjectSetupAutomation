@@ -1,4 +1,5 @@
 import os
+import shutil
 import sys
 
 from github import Github
@@ -12,9 +13,12 @@ gitToken = os.environ['git_token']
 
 projectDir = projectDir + '/' + projectName
 
+# .gitignore template file
+gitignorePath = os.getcwd() + '\.gitignore'
+
 if not os.path.exists(projectDir):
     os.mkdir(projectDir)
-    print("Directory " , projectDir ,  " Created ")
+    print("Directory ", projectDir, " Created ")
 else:
     print("Directory ", projectDir, " already exists")
     exit()
@@ -28,6 +32,9 @@ os.system('git init')
 # create README.md file
 os.system('echo New Project - ' + projectName + ' >> README.md')
 
+# copy gitignore file
+shutil.copy2(gitignorePath, projectDir)
+
 # Using PyGithub for access Githib Api's
 
 # login into github using github token
@@ -35,6 +42,14 @@ g = Github(gitToken)
 
 # Get user details
 user = g.get_user()
+username = user.login
+
+# Check if repo already exists on github
+try:
+    repo = g.get_repo(username + '/' + projectName)
+    print('Repository ' + projectName + ' already exists on Github')
+except:
+    print('Repository check complete. Creating repository ' + projectName)
 
 # Create repo with given name
 repo = user.create_repo(projectName)
