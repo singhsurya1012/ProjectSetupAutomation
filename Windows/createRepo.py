@@ -48,6 +48,7 @@ username = user.login
 try:
     repo = g.get_repo(username + '/' + projectName)
     print('Repository ' + projectName + ' already exists on Github')
+    exit()
 except:
     print('Repository check complete. Creating repository ' + projectName)
 
