@@ -10,7 +10,7 @@ cd /d %~dp0
 If "%1" == "" (
 
 	echo Error: Please pass the project name as parameter
-	echo eg: setup ^<projectName^>	
+	echo eg: np ^<projectName^>	
 	
 	
 )else (
