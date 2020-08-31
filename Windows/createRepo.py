@@ -7,8 +7,8 @@ from github import Github
 # Getting projectName from commandLine Argument passed from script
 projectName = str(sys.argv[1])
 
-# Geting project dir and github token from env variables\
-projectDir = os.environ['proj_dir']
+# Geting project dir and github token from env variables
+projectDir = os.environ['default_proj_dir']
 gitToken = os.environ['git_token']
 
 projectDir = projectDir + '/' + projectName
