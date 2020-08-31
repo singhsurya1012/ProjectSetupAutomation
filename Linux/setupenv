@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+#Silencing pushd command
+pushd () {
+    command pushd "$@" > /dev/null
+}
+
+#Silencing popd command
+popd () {
+    command popd "$@" > /dev/null
+}
+
+#Moving to home directory
+pushd ~
+
+#Adding line in .bashrc file
+echo "" >> .bashrc
+echo "export PATH="\$PATH:/mnt/d/Workspace/ProjectSetupAutomation/Linux/"" >> .bashrc
+
+#Moving back to the orignal directory
+popd

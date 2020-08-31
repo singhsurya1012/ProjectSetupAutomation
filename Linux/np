@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+pushd () {
+    command pushd "$@" > /dev/null
+}
+
+popd () {
+    command popd "$@" > /dev/null
+}
+
+#Moving to the original script directory
+pushd $(dirname $0)
+
+PROJECT_NAME=$1
+if [ "$PROJECT_NAME" == "" ]
+then
+	echo "Error: Please pass the project name as parameter"
+	echo "eg: np <projectName>"
+else
+  echo "Initiating Project Setup - $PROJECT_NAME"
+	python3 createRepo.py $PROJECT_NAME
+fi
+
+#Moving back to the orignal directory
+popd
