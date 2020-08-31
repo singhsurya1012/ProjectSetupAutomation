@@ -1,9 +1,9 @@
-#### This is a utility script which gives you a simple command which you can run to automate your initial project creating steps. 
+#### This is a utility script which gives you a simple command which you can run to automate your initial project creation steps. 
 
 <br>
 
 
-#### Type **np projectName** in cmd to create New Project ####
+##### Type **np projectName** in cmd to create New Project #####
 
 <br>
 
